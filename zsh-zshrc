@@ -1,0 +1,87 @@
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.zsh/ohmyzsh"
+ZSH_CUSTOM="$HOME/.zsh/ohmyzsh-custom"
+
+# Install zsh-async if it’s not present
+if [[ ! -a ~/.zsh-async ]]; then
+    git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
+fi
+source ~/.zsh-async/async.zsh
+
+ZSH_THEME="cobalt2"
+
+plugins=(
+    osx
+    git
+    node
+    nvm
+    npx
+    tmux
+    iterm2
+    vscode
+    # custom plugins go here
+	git-prompt
+	k
+)
+
+
+#######
+# PATHs
+
+#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="node_modules/.bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export PATH=$JAVA_HOME/bin:$PATH
+
+export CODE_TSJS=1
+
+#########
+# PROMPT
+
+# if [ "$USER" = "root" ]
+#     then CARETCOLOR="red"
+#     else CARETCOLOR="blue"
+# fi
+
+# PROMPT='🐈🐈 %{${fg[green]}%}%3~ $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}#%{${reset_color}%} '
+# RPROMPT="%{$fg[yellow]%}[%D{%L:%M:%S}]%{${reset_color}%}"
+
+# ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[cyan]%}‹"
+# ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
+
+# MODE_INDICATOR="%{$fg_bold[magenta]%}<%{$reset_color%}%{$fg[magenta]%}<<%{$reset_color%}"
+
+#########
+# node, npm binaries and settings
+unset NPM_CONFIG_PREFIX
+
+#########
+# NVM
+
+export NVM_DIR="$HOME/.nvm"
+function load_nvm() {
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+}
+
+# Initialize a new worker
+async_start_worker nvm_worker -n
+async_register_callback nvm_worker load_nvm
+async_job nvm_worker sleep 0.1
+
+export DENO_INSTALL="/Users/dbr/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# opam configuration
+test -r /Users/dbr/.opam/opam-init/init.zsh && . /Users/dbr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
