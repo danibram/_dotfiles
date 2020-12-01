@@ -7,3 +7,6 @@
 [submodule "ohmyzsh-custom/plugins/git-prompt.zsh"]
 	path = ohmyzsh-custom/plugins/git-prompt.zsh
 	url = git@github.com:woefe/git-prompt.zsh.git
+[submodule "ohmyzsh-custom/plugins/zsh-async"]
+	path = ohmyzsh-custom/plugins/zsh-async
+	url = git@github.com:mafredri/zsh-async.git

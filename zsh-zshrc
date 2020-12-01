@@ -2,12 +2,6 @@
 export ZSH="$HOME/.zsh/ohmyzsh"
 ZSH_CUSTOM="$HOME/.zsh/ohmyzsh-custom"
 
-# Install zsh-async if it’s not present
-if [[ ! -a ~/.zsh-async ]]; then
-    git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
-fi
-source ~/.zsh-async/async.zsh
-
 ZSH_THEME="cobalt2"
 
 plugins=(
@@ -22,6 +16,7 @@ plugins=(
     # custom plugins go here
 	git-prompt
 	k
+    zsh-async
 )
 
 
