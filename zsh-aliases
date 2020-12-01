@@ -2,8 +2,7 @@
 # ALIASES
 alias dc="docker-compose"
 
-alias st='/Applications/SourceTree.app/Contents/MacOS/SourceTree; exit;'
-alias jdev='/Users/dbr/fmwhome-12_2/jdeveloper/jdev/bin/jdev&'
-alias jdevc='/Users/dbr/fmwhome-12_2/jdeveloper/jdev/bin/jdev - clean&'
+alias st='cd ~/htdocs/seedtag'
+alias htdocs='cd ~/htdocs'
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors&'
 alias chromec='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --ignore-certificate-errors&'

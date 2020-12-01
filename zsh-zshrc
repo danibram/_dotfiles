@@ -2,25 +2,24 @@
 export ZSH="$HOME/.zsh/ohmyzsh"
 ZSH_CUSTOM="$HOME/.zsh/ohmyzsh-custom"
 
-ZSH_THEME="cobalt2"
-
 if [[ -n "$plugins" ]]; then read -A plugins <<< "$plugins"; else
 plugins=(
-    osx
-    git
-    node
-    nvm
-    npx
-    tmux
-    iterm2
-    vscode
-    # custom plugins go here
+	osx
+	git
+	node
+	nvm
+	npx
+	tmux
+	iterm2
+	vscode
+	# custom plugins go here
 	git-prompt
 	k
+	async
 )
 fi
 
-source $ZSH_CUSTOM/plugins/async/async.zsh
+source $ZSH/oh-my-zsh.sh
 
 #######
 # PATHs
@@ -46,18 +45,28 @@ export CODE_TSJS=1
 #########
 # PROMPT
 
-# if [ "$USER" = "root" ]
-#     then CARETCOLOR="red"
-#     else CARETCOLOR="blue"
-# fi
+ZSH_GIT_PROMPT_SHOW_UPSTREAM="no"
 
-# PROMPT='🐈🐈 %{${fg[green]}%}%3~ $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}#%{${reset_color}%} '
-# RPROMPT="%{$fg[yellow]%}[%D{%L:%M:%S}]%{${reset_color}%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="["
+ZSH_THEME_GIT_PROMPT_SUFFIX="] "
+ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL="%{$fg_bold[yellow]%}⟳ "
+ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%{$fg[red]%}(%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX="%{$fg[red]%})"
+ZSH_THEME_GIT_PROMPT_BEHIND="↓"
+ZSH_THEME_GIT_PROMPT_AHEAD="↑"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✖"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✚"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
-# ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[cyan]%}‹"
-# ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-
-# MODE_INDICATOR="%{$fg_bold[magenta]%}<%{$reset_color%}%{$fg[magenta]%}<<%{$reset_color%}"
+PROMPT='🐈 %B%40<..<%~%b$(gitprompt)'
+PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green})❯%f.%F{red}❯❯❯%f) '
+RPROMPT='%{$fg[yellow]%}[%D{%L:%M:%S}]%{${reset_color}%}'
 
 #########
 # node, npm binaries and settings
@@ -70,6 +79,10 @@ export NVM_DIR="$HOME/.nvm"
 function load_nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+}
+
+function load_ssh(){
+	ssh-add -A 2>/dev/null;
 }
 
 # Initialize a new worker
