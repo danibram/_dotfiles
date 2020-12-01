@@ -4,13 +4,7 @@ ZSH_CUSTOM="$HOME/.zsh/ohmyzsh-custom"
 
 if [[ -n "$plugins" ]]; then read -A plugins <<< "$plugins"; else
 plugins=(
-	osx
 	git
-	node
-	nvm
-	npx
-	tmux
-	iterm2
 	vscode
 	# custom plugins go here
 	git-prompt
@@ -20,20 +14,6 @@ plugins=(
 fi
 
 source $ZSH/oh-my-zsh.sh
-
-#######
-# PATHs
-export PATH="/usr/local/sbin:$PATH"
-export PATH="node_modules/.bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export PATH=$JAVA_HOME/bin:$PATH
-export CODE_TSJS=1
 
 #########
 # PROMPT
@@ -59,6 +39,10 @@ PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green
 RPROMPT='%{$fg[yellow]%}[%D{%L:%M:%S}]%{${reset_color}%}'
 
 #########
+# Aliases
+[[ -f ~/.zsh/aliases ]] && . ~/.zsh/aliases
+
+#########
 # NVM
 unset NPM_CONFIG_PREFIX
 export NVM_DIR="$HOME/.nvm"
@@ -73,14 +57,5 @@ async_register_callback nvm_worker load_nvm
 async_job nvm_worker sleep 0.1
 
 #########
-# Deno
-export DENO_INSTALL="/Users/dbr/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-#########
 # opam configuration
 test -r /Users/dbr/.opam/opam-init/init.zsh && . /Users/dbr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-#########
-# Aliases
-[[ -f ~/.zsh/aliases ]] && . ~/.zsh/aliases

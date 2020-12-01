@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# File: .zshenv
+# Description:
+#   Dynamically sets the PATH at each shell startup, as well as other
+#   environment variables.
+#   To enable these modifications at logon, source this file from .profile:
+#
+#     . ~/.zshenv
+#
+#   NOTE: avoid syntax and commands that aren't portable to other platforms and
+#   shells. Check out http://hyperpolyglot.org/unix-shells for more information.
+
+#######
+# PATHs
+export PATH="/usr/local/sbin:$PATH"
+export PATH="node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export PATH=$JAVA_HOME/bin:$PATH
+export CODE_TSJS=1
+
+#########
+# Deno
+export DENO_INSTALL="/Users/dbr/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+#########
+# zsh optimization?
+[ "$USER" = root ] && ZSH_DISABLE_COMPFIX=true
+skip_global_compinit=1

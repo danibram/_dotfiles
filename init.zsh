@@ -24,6 +24,7 @@ local -A dotfiles
 dotfiles=(
 	zsh-aliases      ".zsh/aliases"
 	zsh-zshrc        ".zshrc"
+	zsh-zshenv        ".zshenv"
 	tmux.conf        ".tmux.conf"
     gitconfig        ".gitconfig"
 	ohmyzsh          ".zsh/ohmyzsh"
