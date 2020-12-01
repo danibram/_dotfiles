@@ -4,6 +4,7 @@ ZSH_CUSTOM="$HOME/.zsh/ohmyzsh-custom"
 
 ZSH_THEME="cobalt2"
 
+if [[ -n "$plugins" ]]; then read -A plugins <<< "$plugins"; else
 plugins=(
     osx
     git
@@ -16,9 +17,10 @@ plugins=(
     # custom plugins go here
 	git-prompt
 	k
-    async
 )
+fi
 
+source $ZSH_CUSTOM/plugins/async/async.zsh
 
 #######
 # PATHs
