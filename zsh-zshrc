@@ -16,7 +16,7 @@ plugins=(
     # custom plugins go here
 	git-prompt
 	k
-    zsh-async
+    async
 )
 
 
