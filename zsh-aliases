@@ -2,7 +2,7 @@
 # ALIASES
 alias dc="docker-compose"
 
-alias st='cd ~/htdocs/seedtag'
-alias htdocs='cd ~/htdocs'
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors&'
-alias chromec='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --ignore-certificate-errors&'
+alias st="$HOME/htdocs/seedtag"
+alias htdocs="$HOME/htdocs"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors&"
+alias chromec="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --ignore-certificate-errors&"
