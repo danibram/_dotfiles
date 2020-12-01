@@ -1,4 +1,4 @@
-#Credits to https://github.com/mcornella/dotfiles
+# Credits to https://github.com/mcornella/dotfiles
 
 This is a simplified version for me
 
