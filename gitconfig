@@ -1,11 +1,11 @@
 [user]
 	name = Daniel Biedma
-	email = info@dbr.io
+	email = hi@dbr.io
 [core]
 	excludesfile = /Users/dbr/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -13,3 +13,8 @@
 	template = /Users/dbr/.stCommitMsg
 [color]
 	ui = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
