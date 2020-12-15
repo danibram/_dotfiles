@@ -29,6 +29,7 @@ dotfiles=(
     gitconfig        ".gitconfig"
 	ohmyzsh          ".zsh/ohmyzsh"
 	ohmyzsh-custom   ".zsh/ohmyzsh-custom"
+	bin              ".zsh/bin"
 )
 
 local error symlink
@@ -61,3 +62,13 @@ for file (${(ko)dotfiles}); do
 		msg ERROR "$error"
 	fi
 done
+
+# Add sourcing of .zshenv to .profile
+grep -q "\. \"\$HOME/${dotfiles[zsh-zshenv]}\"" ~/.profile || {
+	cat >> ~/.profile <<-EOF
+		# load posix-compatible .zshenv
+		if [ -r "\$HOME/${dotfiles[zsh-zshenv]}" ]; then
+		    . "\$HOME/${dotfiles[zsh-zshenv]}"
+		fi
+	EOF
+}

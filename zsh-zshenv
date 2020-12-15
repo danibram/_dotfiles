@@ -14,6 +14,8 @@
 #######
 # PATHs
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.zsh/bin:$PATH"
 export PATH="node_modules/.bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -38,10 +40,17 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 test -r /Users/dbr/.opam/opam-init/init.zsh && . /Users/dbr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 #########
-# # curl -fsSL https://fnm.vercel.app/install | bash
 # fnm
-export PATH=/Users/dbr/.fnm:$PATH
-eval "`fnm env`"
+export PATH="/Users/dbr/.fnm:$PATH"
+eval "$(fnm env)"
+
+unset DIR
+
+# remove duplicate entries from PATH
+[ -n "$ZSH_VERSION" ] && typeset -U path
+
+# export PATH for other sessions
+export PATH
 
 #########
 # zsh optimization?

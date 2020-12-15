@@ -2,10 +2,26 @@
 export ZSH="$HOME/.zsh/ohmyzsh"
 ZSH_CUSTOM="$HOME/.zsh/ohmyzsh-custom"
 
+# Colorize settings
+ZSH_COLORIZE_TOOL=chroma
+# Nice ones: arduino friendly paraiso-dark solarized-dark solarized-dark256 vim
+ZSH_COLORIZE_STYLE=vim
+
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,underline"
+
 if [[ -n "$plugins" ]]; then read -A plugins <<< "$plugins"; else
 plugins=(
 	git
 	vscode
+	docker
+	docker-compose
+	colorize
+	colored-man-pages
+	npm
+	yarn
+	history-substring-search
+	zsh-autosuggestions
 	# custom plugins go here
 	git-prompt
 	k
