@@ -43,24 +43,38 @@ PROMPT='🐈🐈 $(shpwd)$(gitprompt)'
 PROMPT+='%(?.%(!.%F{white}❯.%F{green})❯%f.%F{red}❯%f) '
 RPROMPT='%{$fg[yellow]%}[%D{%L:%M:%S}]%{${reset_color}%}'
 
+# Don't load Oh My Zsh on TTYs
+[[ $TTY != /dev/tty* || -n "$OMZ_LOAD" ]] && source "$ZSH/oh-my-zsh.sh"
+
+# complete . and .. directories
+zstyle ':completion:*' special-dirs true
+
+# paginated completion
+zstyle ':completion:*' list-prompt   ''
+zstyle ':completion:*' select-prompt ''
+
+## More zsh options
+
+# correction of commands
+setopt correct
+
+# extended globbing (adds ^ and other symbols as wildcards)
+setopt extended_glob
+
+# i want all typed commands to be available everywhere
+setopt share_history
+
+# zmv
+autoload zmv
+alias mmv='noglob zmv -W -v'
+
+# Docker completion option stacking
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
 #########
 # Aliases
 [[ -f ~/.zsh/aliases ]] && . ~/.zsh/aliases
 
-#########
-# NVM
-unset NPM_CONFIG_PREFIX
-export NVM_DIR="$HOME/.nvm"
-function load_nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-}
-
-# Initialize a new worker
-async_start_worker nvm_worker -n
-async_register_callback nvm_worker load_nvm
-async_job nvm_worker sleep 0.1
-
-#########
-# opam configuration
-test -r /Users/dbr/.opam/opam-init/init.zsh && . /Users/dbr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# add current directory to the end of PATH
+path+=.

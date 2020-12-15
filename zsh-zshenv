@@ -25,10 +25,23 @@ export JAVA_HOME="$(/usr/libexec/java_home)"
 export PATH=$JAVA_HOME/bin:$PATH
 export CODE_TSJS=1
 
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+
 #########
 # Deno
 export DENO_INSTALL="/Users/dbr/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+#########
+# opam configuration
+test -r /Users/dbr/.opam/opam-init/init.zsh && . /Users/dbr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+#########
+# # curl -fsSL https://fnm.vercel.app/install | bash
+# fnm
+export PATH=/Users/dbr/.fnm:$PATH
+eval "`fnm env`"
 
 #########
 # zsh optimization?
