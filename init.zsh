@@ -22,14 +22,15 @@ function msg() {
 # Files to be symlinked to home directory
 local -A dotfiles
 dotfiles=(
-	zsh-aliases      ".zsh/aliases"
-	zsh-zshrc        ".zshrc"
-	zsh-zshenv        ".zshenv"
-	tmux.conf        ".tmux.conf"
-    gitconfig        ".gitconfig"
-	ohmyzsh          ".zsh/ohmyzsh"
-	ohmyzsh-custom   ".zsh/ohmyzsh-custom"
-	bin              ".zsh/bin"
+	bin                    ".zsh/bin"
+	modules/zimfw          ".zsh/zim"
+	terminal/zshrc         ".zshrc"
+	terminal/zshenv        ".zshenv"
+	terminal/zlogin        ".zlogin"
+	terminal/zimrc         ".zimrc"
+	tmux.conf              ".tmux.conf"
+	git/gitconfig          ".gitconfig"
+	git/gitignore_global   ".gitignore_global"
 )
 
 local error symlink
@@ -63,12 +64,15 @@ for file (${(ko)dotfiles}); do
 	fi
 done
 
+mkdir ~/.z
+source modules/zimfw/zimfw.zsh install
+
 # Add sourcing of .zshenv to .profile
-grep -q "\. \"\$HOME/${dotfiles[zsh-zshenv]}\"" ~/.profile || {
+grep -q "\. \"\$HOME/${dotfiles[zshenv]}\"" ~/.profile || {
 	cat >> ~/.profile <<-EOF
 		# load posix-compatible .zshenv
-		if [ -r "\$HOME/${dotfiles[zsh-zshenv]}" ]; then
-		    . "\$HOME/${dotfiles[zsh-zshenv]}"
+		if [ -r "\$HOME/${dotfiles[zshenv]}" ]; then
+		    . "\$HOME/${dotfiles[zshenv]}"
 		fi
 	EOF
 }

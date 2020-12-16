@@ -16,7 +16,7 @@ This is a simplified version for me
 1. Download or clone repository:
 
 ```sh
-git clone git@github.com:danibram/dotfiles
+git clone --depth 1 git@github.com:codelytv/dotfiles.git
 ```
 
 2. Update git submodules:

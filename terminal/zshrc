@@ -1,0 +1,26 @@
+
+# Uncomment for debuf with `zprof`
+# zmodload zsh/zprof
+
+export DOTFILES_PATH=$HOME/htdocs/_dotfiles
+export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zsh/zim
+
+# ZSH Ops
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FCNTL_LOCK
+# setopt autopushd
+
+# Start zim
+source ${ZIM_HOME}/init.zsh
+
+# Async mode for autocompletion
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_HIGHLIGHT_MAXLENGTH=300
+
+source $DOTFILES_PATH/terminal/init.sh
+
+source $DOTFILES_PATH/terminal/dbr.zsh-theme
+
+autoload -Uz promptinit && promptinit
+
+# source $DOTFILES_PATH/terminal/zsh/key-bindings.zsh
