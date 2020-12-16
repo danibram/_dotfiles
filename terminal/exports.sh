@@ -3,7 +3,7 @@
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export CODE_TSJS=1
-export DENO_INSTALL="/Users/dbr/.deno"
+export DENO_INSTALL="$HOME/.deno"
 
 paths=(
   "$HOME/bin"
@@ -24,7 +24,7 @@ paths=(
   "$DENO_INSTALL/bin"
   "/usr/local/opt/icu4c/bin"
   "/usr/local/opt/icu4c/sbin"
-  "/Users/dbr/.fnm"
+  "$HOME/.fnm"
   "$HOME/.zsh/bin"
 )
 
@@ -37,6 +37,15 @@ export PATH
 
 #########
 # opam configuration
-test -r /Users/dbr/.opam/opam-init/init.zsh && . /Users/dbr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+#########
+# fnm (NodeJs Version Manager)
 eval "$(fnm env)"
+
+#########
+# gcloud configuration
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/.gcloud/path.zsh.inc" ]; then . "$HOME/.gcloud/path.zsh.inc"; fi
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/.gcloud/completion.zsh.inc" ]; then . "$HOME/.gcloud/completion.zsh.inc"; fi
