@@ -40,4 +40,4 @@ git submodule update
 - [Custom theme](terminal/dbr.zsh-theme)
 - [k](https://github.com/supercrabtree/k)
 - [z](https://github.com/rupa/z)
-- Symplinks (shell, zim, and git)
+- Symlinks (shell, zim, and git)
