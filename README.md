@@ -1,4 +1,7 @@
-# Credits to https://github.com/mcornella/dotfiles
+## Inspired by:
+
+- [https://github.com/mcornella/dotfiles](https://github.com/mcornella/dotfiles)
+- [https://github.com/CodelyTV/dotfiles](https://github.com/CodelyTV/dotfiles)
 
 This is a simplified version for me
 
@@ -30,3 +33,11 @@ git submodule update
 3. Run init script: `./init.zsh`
 
 4. Restart the shell or run `exec zsh`
+
+## Features
+
+- [Zim](https://github.com/zimfw/zimfw)
+- [Custom theme](terminal/dbr.zsh-theme)
+- [k](https://github.com/supercrabtree/k)
+- [z](https://github.com/rupa/z)
+- Symplinks (shell, zim, and git)
