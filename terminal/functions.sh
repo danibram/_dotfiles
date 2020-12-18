@@ -25,3 +25,19 @@ function recent_dirs() {
 
   cd "$(echo "$selected" | sed "s/\~/$escaped_home/")" || echo "Invalid directory"
 }
+
+function dots_update() {
+ cd "$DOTFILES_PATH" || exit
+  git pull
+  git submodule init
+  git submodule update
+  git submodule status
+
+  for submodule in "$DOTFILES_PATH/modules/"*; do git submodule update --init --recursive --remote --merge "$submodule"; done
+  echo "[submodules] Updated!"
+
+  brew upgrade fnm
+  echo "[fnm] Updated!"
+
+  echo "[dots] Updated!"
+}
