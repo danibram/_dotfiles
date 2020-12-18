@@ -3,8 +3,8 @@ zmodule environment
 zmodule git-info
 zmodule history
 zmodule input
-zmodule completion
 zmodule zsh-users/zsh-autosuggestions
 zmodule zsh-users/zsh-syntax-highlighting
+zmodule completion
 ztermtitle='%~'
 zhighlighters=(main brackets)
