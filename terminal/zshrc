@@ -19,8 +19,8 @@ ZSH_HIGHLIGHT_MAXLENGTH=300
 
 source $DOTFILES_PATH/terminal/init.sh
 
-source $DOTFILES_PATH/terminal/dbr.zsh-theme
 
 autoload -Uz promptinit && promptinit
+source $DOTFILES_PATH/terminal/dbr.zsh-theme
 
 # source $DOTFILES_PATH/terminal/zsh/key-bindings.zsh
