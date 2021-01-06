@@ -31,6 +31,7 @@ dotfiles=(
 	tmux.conf              ".tmux.conf"
 	git/gitconfig          ".gitconfig"
 	git/gitignore_global   ".gitignore_global"
+	terminal/kitty         ".config/kitty"
 )
 
 local error symlink

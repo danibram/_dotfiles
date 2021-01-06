@@ -4,6 +4,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export CODE_TSJS=1
 export DENO_INSTALL="$HOME/.deno"
+export KITTY_CONFIG_DIRECTORY="$HOME/.config/kitty"
 
 paths=(
   "$HOME/bin"
